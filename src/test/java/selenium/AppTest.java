@@ -21,7 +21,7 @@ public class AppTest
     @Before
     public void setUp(){
         System.out.println("Iniciando configuración...");
-        System.setProperty("webdriver.chrome.driver","drivers/chromedriver");
+        System.setProperty("webdriver.chrome.driver","drivers/chromedriver.exe");
         driver = new ChromeDriver();
         driver.get("https://www.amazon.com");
         driver.manage().window().maximize();
@@ -35,8 +35,21 @@ public class AppTest
     {
         System.out.println("Iniciando Pruebas...");
         WebElement searchbox = driver.findElement(By.name("q"));
-        searchbox.sendKeys("HandBook Devops");
+        searchbox.sendKeys("HandBook Devops");     
         searchbox.submit();
-        assertEquals("HandBook Devops", driver.getTitle());
+        assertEquals("HandBook Devops - Buscar con Google", driver.getTitle());
+        driver.findElement(By.linkText("Imágenes")).click();
+        driver.findElement(By.linkText("Shopping")).click();
+    }
+
+    @Test
+    public void shouldAnswerWithTruePhoenix()
+    {
+        System.out.println("Iniciando Pruebas...");
+        driver.navigate().to("https://www.amazon.com");
+        WebElement searchbox = driver.findElement(By.name("field-keywords"));
+        searchbox.sendKeys("The Phoenix Project");     
+        searchbox.submit();
+        assertEquals("Amazon.com : The Phoenix Project", driver.getTitle());
     }
 }
