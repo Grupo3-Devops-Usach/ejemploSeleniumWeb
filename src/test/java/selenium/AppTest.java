@@ -28,14 +28,14 @@ public class AppTest
         driver = new ChromeDriver();
         driver.get("https://www.google.com");
         driver.manage().window().maximize();
-        System.out.println(driver.getCurrentUrl());
-        System.out.println(driver.getTitle());
     }
 
     @Test
     public void shouldAnswerWithTrue()
     {
         System.out.println("Iniciando Pruebas...");
+        System.out.println(driver.getCurrentUrl());
+        System.out.println(driver.getTitle());
         WebElement searchbox = driver.findElement(By.name("q"));
         driver.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
         searchbox.sendKeys("HandBook Devops");  
@@ -53,6 +53,8 @@ public class AppTest
     {
         System.out.println("Iniciando Pruebas...");
         driver.navigate().to("https://www.amazon.com");
+        System.out.println(driver.getCurrentUrl());
+        System.out.println(driver.getTitle());
         driver.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
         WebElement searchbox = driver.findElement(By.name("field-keywords"));
         driver.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
