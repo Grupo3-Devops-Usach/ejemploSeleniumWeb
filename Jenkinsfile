@@ -7,7 +7,7 @@ pipeline
         {
             steps
             {
-                bat 'mvnw test'
+                sh 'mvnw test'
             }
         }
     }
